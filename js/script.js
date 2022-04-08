@@ -47,9 +47,7 @@ const items = [
     }
 ]
 
-const container = document.createElement("div");
-container.classList.add("container")
-document.body.appendChild(container);
+const container = document.querySelector(".container");
 
 const slideContainer = document.createElement("div");
 slideContainer.classList.add("slideContainer")
@@ -78,47 +76,26 @@ downContainer.append(downArrow)
 for (let i = 0; i < items.length; i++) {
     const slide = document.createElement("div");
     slide.classList.add("slide")
-    slide.innerHTML = `<div class="slide">
-                                <img src="${items[i].immagine}" alt="Img">
-                                <div class="slideText">
-                                    <h3>${items[i].title}</h3>
-                                    <span>${items[i].text}</span>
-                                </div>
-                            </div>`
-    /* const slide = document.createElement("div");
-    slide.classList.add("slide") */
+    slide.innerHTML = `<img src="${items[i].immagine}" alt="Img">
+                        <div class="slideText">
+                            <h3>${items[i].title}</h3>
+                            <span>${items[i].text}</span>
+                        </div> `
     slideContainer.append(slide)
-
-    /* const image = document.createElement("img");
-    image.setAttribute("src", items[i]);
-    slide.append(image) */
-
     if (i == 0) {
         slide.classList.add("active")
     }
-
-    /* const slideText = document.createElement("div");
-    slideText.classList.add("slideText")
-    slide.append(slideText)
-
-    const title = document.createElement("h3");
-    slideText.append(title)
-    title.innerHTML = titleArray[i];
-
-    const text = document.createElement("span");
-    slideText.append(text)
-    text.innerHTML = textArray[i]; */
-    
     const col = document.createElement("div");
     col.classList.add("col")
     row.append(col)
     const colImage = document.createElement("img");
-    colImage.setAttribute("src", items[i]);
+    colImage.setAttribute("src", items[i].immagine);
     col.append(colImage)
 }
 /* SLIDER FRECCE */
 let currentIndex = 0;
 const slideArray = document.getElementsByClassName("slide");
+const colArray = document.getElementsByClassName("col");
 const down = document.getElementById("down")
 down.addEventListener("click", function () {
     slideArray[currentIndex].classList.remove("active");
