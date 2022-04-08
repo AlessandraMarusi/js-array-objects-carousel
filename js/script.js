@@ -127,38 +127,18 @@ up.addEventListener("click", function slideUp() {
 
 
 /* Cambio img on click */
-colArray[0].addEventListener("click", function () {
-    slideArray[currentIndex].classList.remove("active");
-    colArray[currentIndex].classList.remove("activeCol")
-    currentIndex = 0
-    slideArray[currentIndex].classList.add("active")
-    colArray[currentIndex].classList.add("activeCol")
-})
-colArray[1].addEventListener("click", function () {
-    slideArray[currentIndex].classList.remove("active");
-    colArray[currentIndex].classList.remove("activeCol")
-    currentIndex = 1
-    slideArray[currentIndex].classList.add("active")
-    colArray[currentIndex].classList.add("activeCol")
-})
-colArray[2].addEventListener("click", function () {
-    slideArray[currentIndex].classList.remove("active");
-    colArray[currentIndex].classList.remove("activeCol")
-    currentIndex = 2
-    slideArray[currentIndex].classList.add("active")
-    colArray[currentIndex].classList.add("activeCol")
-})
-colArray[3].addEventListener("click", function () {
-    slideArray[currentIndex].classList.remove("active");
-    colArray[currentIndex].classList.remove("activeCol")
-    currentIndex = 3
-    slideArray[currentIndex].classList.add("active")
-    colArray[currentIndex].classList.add("activeCol")
-})
-colArray[4].addEventListener("click", function () {
-    slideArray[currentIndex].classList.remove("active");
-    colArray[currentIndex].classList.remove("activeCol")
-    currentIndex = 4
-    slideArray[currentIndex].classList.add("active")
-    colArray[currentIndex].classList.add("activeCol")
-})
+for (let i = 0; i < colArray.length; i++) {
+    colArray[i].addEventListener("click", changeOnClick)
+}
+
+function changeOnClick() {
+    for (let i = 0; i < colArray.length; i++){
+        if (this === colArray[i]) {
+            slideArray[currentIndex].classList.remove("active");
+            colArray[currentIndex].classList.remove("activeCol")
+            currentIndex = i
+            slideArray[currentIndex].classList.add("active")
+            colArray[currentIndex].classList.add("activeCol")
+        }
+    }
+}
