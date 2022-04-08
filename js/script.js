@@ -47,6 +47,9 @@ const items = [
     }
 ]
 
+let slideDownTimer = setInterval(slideDown, 5000);
+
+
 const container = document.querySelector(".container");
 
 const slideContainer = document.createElement("div");
@@ -97,7 +100,9 @@ let currentIndex = 0;
 const slideArray = document.getElementsByClassName("slide");
 const colArray = document.getElementsByClassName("col");
 const down = document.getElementById("down")
-down.addEventListener("click", function () {
+down.addEventListener("click", slideDown)
+
+function slideDown() {
     slideArray[currentIndex].classList.remove("active");
     colArray[currentIndex].classList.remove("activeCol")
     currentIndex += 1;
@@ -106,9 +111,10 @@ down.addEventListener("click", function () {
     }
     slideArray[currentIndex].classList.add("active")
     colArray[currentIndex].classList.add("activeCol")
-})
+}
+
 const up = document.getElementById("up")
-up.addEventListener("click", function () {
+up.addEventListener("click", function slideUp() {
     slideArray[currentIndex].classList.remove("active");
     colArray[currentIndex].classList.remove("activeCol")
     currentIndex -= 1;
@@ -119,7 +125,6 @@ up.addEventListener("click", function () {
     colArray[currentIndex].classList.add("activeCol")
 })
 
-/* const colArray = document.getElementsByClassName("col");
 colArray[0].addEventListener("click", function () {
     slideArray[currentIndex].classList.remove("active");
     colArray[currentIndex].classList.remove("activeCol")
@@ -154,4 +159,4 @@ colArray[4].addEventListener("click", function () {
     slideArray[4].classList.add("active")
     colArray[4].classList.add("activeCol")
     currentIndex = 4
-}) */
+})
